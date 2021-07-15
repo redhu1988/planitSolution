@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4844" started-at="2021-07-15T01:16:54 AEST" finished-at="2021-07-15T01:16:59 AEST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4844" started-at="2021-07-15T01:16:54 AEST" finished-at="2021-07-15T01:16:59 AEST">
+      <class name="planItTest.HomePageTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:planItTest.HomePageTests@22eeefeb]" name="setUp" is-config="true" duration-ms="2164" started-at="2021-07-15T01:16:52 AEST" finished-at="2021-07-15T01:16:54 AEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="goToPlanItSln()[pri:0, instance:planItTest.HomePageTests@22eeefeb]" name="goToPlanItSln" is-config="true" duration-ms="3170" started-at="2021-07-15T01:16:54 AEST" finished-at="2021-07-15T01:16:58 AEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToPlanItSln -->
+        <test-method status="PASS" signature="navigateToContactPage()[pri:0, instance:planItTest.HomePageTests@22eeefeb]" name="navigateToContactPage" duration-ms="1632" started-at="2021-07-15T01:16:58 AEST" finished-at="2021-07-15T01:16:59 AEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToContactPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:planItTest.HomePageTests@22eeefeb]" name="tearDown" is-config="true" duration-ms="95" started-at="2021-07-15T01:16:59 AEST" finished-at="2021-07-15T01:16:59 AEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- planItTest.HomePageTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
