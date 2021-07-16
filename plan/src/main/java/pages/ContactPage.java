@@ -21,11 +21,11 @@ public class ContactPage extends BaseClass {
 
     }
 
-    @FindBy(xpath = "//a[text() ='Submit']")
+    @FindBy(css = "a.btn-contact")
     WebElement submitBtn;
 
     public WebElement returnSubmitBtn() {
-        return submitBtn;
+        return waitForElementToAppear(submitBtn);
     }
 
     @FindBy(xpath = "//*[@id='header-message']/div")
@@ -91,9 +91,26 @@ public class ContactPage extends BaseClass {
         return telephone_err;
     }
 
+    @FindBy(css = "div.alert.alert-success")
+    WebElement submissionMsg;
+
+    public WebElement returnSubmissionMsg() {
+        WebElement element=waitForElementToAppear(modalPopUp);
+        waitForElementToDisappear(element);
+        return submissionMsg;
+    }
+
+    @FindBy(css = "div.popup.modal")
+    WebElement modalPopUp;
+
+    public WebElement returnModalPopUp() {
+        return modalPopUp;
+    }
+
     public boolean checkIfElementPresent(WebElement element) {
         return isElementPresent(element);
     }
+
 
     public void fillMandatoryFieldsValidData() throws IOException {
         returnForenameTxt().sendKeys(ExcelOperations.getData("Contact", 1, 0));

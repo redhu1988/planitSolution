@@ -30,13 +30,11 @@ public class CartPage extends BaseClass {
     }
 
     public Boolean validateQuantityForItemInCart(String itemName, String quantity) {
-        List<WebElement> cartItems = cartTable.findElements(By.xpath("//tbody/tr"));
-        List<WebElement> cartItemProps = cartTable.findElements(By.xpath("//thead/tr/th"));
-        for (int row = 0; row < cartItems.stream().count(); row++) {
-            WebElement rowElement=cartItems.get(row);
-            String itmName = rowElement.findElement(By.xpath("//td[1]")).getText();
-            if (itmName.contains(itemName)) {
-                return cartItems.get(row).findElement(By.xpath("//td[3]/input")).getAttribute("value").contains(quantity);
+        List<WebElement> cartItems = getCartTable().findElements(By.xpath("//tbody/tr"));
+        for (int row = 1; row <= cartItems.stream().count(); row++) {
+           String nameOfItem= cartTable.findElement(By.xpath("//tbody/tr["+row+"]/td[1]")).getText();
+            if (nameOfItem.contains(itemName)) {
+                return cartTable.findElement(By.xpath("//tbody/tr["+row+"]/td[3]/input")).getAttribute("value").contains(quantity);
             }
         }
         return false;

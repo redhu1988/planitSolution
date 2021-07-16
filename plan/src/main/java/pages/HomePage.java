@@ -16,7 +16,7 @@ public class HomePage extends BaseClass {
 		
 	}
 	
-	@FindBy(linkText = "Contact")
+	@FindBy(css= "li#nav-contact>a")
 	WebElement contact_link;
 	public WebElement getContactLink() {
 		return contact_link;
@@ -25,6 +25,24 @@ public class HomePage extends BaseClass {
 	@FindBy(xpath = "//li[@id='nav-shop']/a" )
 	WebElement shopLinkBtn;
 	public WebElement getShopLinkBtn() {
+		clickElementAndWaitForPageLoad(shopLinkBtn);
 		return shopLinkBtn;
+	}
+
+	@FindBy(css="a.brand")
+	WebElement homePageLink;
+	public WebElement getHomePageLink(){return homePageLink;}
+
+	public void navigateToContactPage()
+	{
+		clickElementAndWaitForPageLoad(contact_link);
+	}
+	public void navigateToHomePage()
+	{
+		clickElementAndWaitForPageLoad(homePageLink);
+	}
+	public void navigateToShopPage()
+	{
+		clickElementAndWaitForPageLoad(shopLinkBtn);
 	}
 }

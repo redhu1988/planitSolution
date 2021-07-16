@@ -1,19 +1,24 @@
 package planItTest;
 
-import java.util.concurrent.TimeUnit;
 
+import common.DriverAbstraction;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class BaseClassTest {
     WebDriver driver;
 
     @BeforeSuite
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    @Parameters("browser")
+    public void setUp(@Optional("chrome") String browser) {
+        driver = DriverAbstraction.getDriverInstance(browser);
+    }
+
+    @AfterSuite
+    private void tearDown() throws InterruptedException {
+        driver.quit();
     }
 }

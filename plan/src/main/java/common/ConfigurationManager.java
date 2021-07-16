@@ -28,8 +28,13 @@ public class ConfigurationManager {
         }
     }
 
-    public String getTestDataFile(){
-        String driverPath = properties.getProperty("testDataFileName");
+    public String getCsvTestDataFile(){
+        String driverPath = properties.getProperty("csvTestDataFilePath");
+        if(driverPath!= null) return driverPath;
+        else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
+    }
+    public String getExcelTestDataFile(){
+        String driverPath = properties.getProperty("excelTestDataFilePath");
         if(driverPath!= null) return driverPath;
         else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
     }

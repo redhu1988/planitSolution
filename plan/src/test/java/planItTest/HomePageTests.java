@@ -5,15 +5,11 @@ import java.io.IOException;
 import common.ConfigurationManager;
 import common.ObjectRepository;
 import common.TestDataOperations;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import pages.CartPage;
 import pages.ContactPage;
-import common.ExcelOperations;
 import pages.HomePage;
 import pages.ShopPage;
 
@@ -29,20 +25,18 @@ public class HomePageTests extends BaseClassTest {
     private void goToPlanItSln() {
         objectRepository = new ObjectRepository(driver);
         configurationManager = new ConfigurationManager();
-        testFilePath = System.getProperty("user.dir") + "\\" + configurationManager.getTestDataFile();
-        TestDataOperations.readTestData(testFilePath);
         driver.get(configurationManager.getApplicationUrl());
     }
 
-    @Test
-    private void navigateToContactPage() {
-        homePage = objectRepository.getHomePageInstance();
-        homePage.getContactLink().click();
+    @BeforeMethod
+    private void goToHomePage() {
+        objectRepository.getHomePageInstance().navigateToHomePage();
     }
 
 
-    @Test(dependsOnMethods = {"navigateToContactPage"}, priority = 1)
+    @Test(priority = 1)
     private void validateContactPage() throws IOException {
+        objectRepository.getHomePageInstance().navigateToContactPage();
         ContactPage contactPage = objectRepository.getContactPageInstance();
         contactPage.returnSubmitBtn().click();
 
@@ -65,18 +59,19 @@ public class HomePageTests extends BaseClassTest {
         assertFalse(contactPage.checkIfElementPresent(contactPage.returnMessageErr()));
     }
 
-    @Test(dependsOnMethods = {"navigateToContactPage"}, priority = 2)
+    @Test(priority = 2)
     private void testContactPageSuccessfulSubmission() throws Exception {
+        objectRepository.getHomePageInstance().navigateToContactPage();
         ContactPage contactPage = objectRepository.getContactPageInstance();
         contactPage.fillMandatoryFieldsValidData();
         contactPage.returnSubmitBtn().click();
-        assertTrue(!contactPage.returnBanner().getText().equals("We welcome your feedback - but we won't get it unless you complete the form correctly."),
-                "Banner message on click of Submit is not displayed");
-        assertTrue(contactPage.returnBanner().getText().equals("We welcome your feedback - tell it how it is."));
+        assertTrue(contactPage.returnSubmissionMsg().getText().contains("Thanks PlanIt, we appreciate your feedback."));
+
     }
 
-    @Test(dependsOnMethods = {"navigateToContactPage"}, priority = 3)
+    @Test(priority = 3)
     private void testContactPageInvalidDataErrors() throws Exception {
+        objectRepository.getHomePageInstance().navigateToContactPage();
         ContactPage contactPage = objectRepository.getContactPageInstance();
         contactPage.fillMandatoryFieldsInValidData();
         assertTrue(contactPage.returnEmailErr().getText().equals("Please enter a valid email"));
@@ -86,23 +81,19 @@ public class HomePageTests extends BaseClassTest {
     @Test(priority = 4)
     private void addItemsToShoppingCart() {
         homePage = objectRepository.getHomePageInstance();
-        ShopPage shopPage = objectRepository.getShopPageInstance();
         homePage.getShopLinkBtn().click();
-
-        Actions actions = new Actions(driver);
-        actions.doubleClick(shopPage.getFunnyCowLink()).perform();
-        shopPage.getFluffyBunnyLink().click();
-        shopPage.getCartMenuBtn().click();
+        ShopPage shopPage = objectRepository.getShopPageInstance();
+        shopPage.addItemsToCart();
+        shopPage.goToCart();
 
         CartPage cartPage = objectRepository.getCartPageInstance();
         Assert.assertTrue(cartPage.validateQuantityForItemInCart("Funny Cow", "2"));
         Assert.assertTrue(cartPage.validateQuantityForItemInCart("Fluffy Bunny", "1"));
     }
 
-    @AfterSuite
-    private void tearDown() throws InterruptedException {
+    @AfterTest
+    private void closeBrowser(){
         driver.close();
-        driver.quit();
     }
 
 
