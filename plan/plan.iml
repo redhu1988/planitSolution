@@ -32,9 +32,6 @@
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.11.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.14.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:3.141.59" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.78" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.webjars:jquery:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:5.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.30" level="project" />
@@ -102,8 +99,9 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents.core5:httpcore5-h2:5.0" level="project" />
     <orderEntry type="library" name="Maven: org.rauschig:jarchivelib:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.13.1" level="project" />
-    <orderEntry type="library" name="Maven: com.opencsv:opencsv:3.3" level="project" />
     <orderEntry type="library" name="Maven: org.jumpmind.symmetric:symmetric-csv:3.5.19" level="project" />
-    <orderEntry type="library" name="Maven: com.epam:parso:2.0.14" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.78" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:3.5.1" level="project" />
   </component>
 </module>

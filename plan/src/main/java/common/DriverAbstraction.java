@@ -6,9 +6,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverAbstraction {
+   static WebDriver driver;
+    public static WebDriver getDriverInstance(){
+        return driver;
+    }
 
     public static WebDriver getDriverInstance(String browserName) {
-        WebDriver driver;
+
         switch (browserName) {
             case "internetExplorer":
             case "firefox":

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import common.ConfigurationManager;
 import common.ObjectRepository;
-import common.TestDataOperations;
+import Listeners.PlanITReportListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -14,7 +14,7 @@ import pages.HomePage;
 import pages.ShopPage;
 
 import static org.testng.Assert.*;
-
+@Listeners(PlanITReportListener.class)
 public class HomePageTests extends BaseClassTest {
     ObjectRepository objectRepository;
     HomePage homePage;

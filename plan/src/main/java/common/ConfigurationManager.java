@@ -39,6 +39,12 @@ public class ConfigurationManager {
         else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
     }
 
+    public String getScreenShotsDirectory(){
+        String driverPath = properties.getProperty("screenShotsDirectory");
+        if(driverPath!= null) return driverPath;
+        else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
+    }
+
     public String getApplicationUrl() {
         String url = properties.getProperty("applicationUrl");
         if(url != null) return url;
