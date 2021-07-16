@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <listeners>
-    <listener class-name="Listeners.PlanITReportListener"></listener>
+    <listener class-name="listeners.PlanITReportListener"></listener>
   </listeners>
   <parameter name="browser" value="chrome"></parameter>
   <test name="Test">
