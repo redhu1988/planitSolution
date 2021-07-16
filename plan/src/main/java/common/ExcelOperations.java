@@ -1,5 +1,7 @@
 package common;
 
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -19,7 +21,8 @@ public class ExcelOperations {
 		XSSFWorkbook workBook = new XSSFWorkbook(fs_in);
 		XSSFSheet sheet = workBook.getSheet(sheetName);
 		XSSFRow row = sheet.getRow(rowNum);
-
-		return row.getCell(colNum).getStringCellValue();
+		DataFormatter formatter = new DataFormatter();
+		return formatter.formatCellValue(row.getCell(colNum));
 	}
+
 }

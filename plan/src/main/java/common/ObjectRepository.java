@@ -1,6 +1,7 @@
 package common;
 
 import org.openqa.selenium.WebDriver;
+import pages.CartPage;
 import pages.ContactPage;
 import pages.HomePage;
 import pages.ShopPage;
@@ -10,6 +11,7 @@ public class ObjectRepository {
     HomePage homePage;
     ContactPage contactPage;
     ShopPage shopPage;
+    CartPage cartPage;
 
     public ObjectRepository(WebDriver driver){
         this.driver=driver;
@@ -31,5 +33,12 @@ public class ObjectRepository {
             shopPage=new ShopPage(driver);
         }
         return shopPage;
+    }
+
+    public CartPage getCartPageInstance(){
+        if(cartPage==null){
+            cartPage=new CartPage(driver);
+        }
+        return cartPage;
     }
 }

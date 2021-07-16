@@ -2,6 +2,7 @@ package common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,8 +20,9 @@ public class BaseClass {
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
 		
 	}
-	protected void waitForElementToAppear(By locator) {
-		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	protected WebElement waitForElementToAppear(WebElement element) {
+		webDriverWait.until(ExpectedConditions.visibilityOf(element));
+		return element;
 	}
 
 	protected void waitForElementToDisappear(By locator) {
@@ -29,5 +31,16 @@ public class BaseClass {
 
 	protected void waitForTextToDisappear(By locator, String text) {
 		webDriverWait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
+	}
+
+	protected boolean isElementPresent(WebElement element){
+		try{
+			element.isDisplayed();
+			return true;
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
+		return false;
 	}
 }

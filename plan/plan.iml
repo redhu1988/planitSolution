@@ -102,5 +102,8 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents.core5:httpcore5-h2:5.0" level="project" />
     <orderEntry type="library" name="Maven: org.rauschig:jarchivelib:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: com.opencsv:opencsv:3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jumpmind.symmetric:symmetric-csv:3.5.19" level="project" />
+    <orderEntry type="library" name="Maven: com.epam:parso:2.0.14" level="project" />
   </component>
 </module>
